@@ -1,63 +1,91 @@
+/**
+ * app/page.tsx
+ *
+ * =========================================
+ * WHAT THIS FILE IS
+ * =========================================
+ * This file defines the HOME PAGE of the website.
+ *
+ * Route:
+ * /
+ *
+ * It introduces the author and explains the purpose
+ * of the website.
+ *
+ * =========================================
+ * COMPONENT TYPE
+ * =========================================
+ * - Page
+ * - Server Component (default)
+ *
+ * No "use client" is needed because:
+ * - There is no user interaction
+ * - No state or effects
+ */
+
+// ===============================
+// Next.js Image component
+// ===============================
+
 import Image from "next/image";
+
+// ===============================
+// Home page component
+// ===============================
 
 export default function Home() {
   return (
+    /**
+     * Outer wrapper
+     * - Centers content both vertically and horizontally
+     * - Ensures full viewport height
+     * - Handles light / dark background
+     */
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      
+      {/*
+        Main content container
+        - Limits content width for readability
+        - Uses vertical layout
+        - Adds generous padding for breathing space
+      */}
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
+
+        {/*
+          Intro text section
+          - Contains heading and descriptive paragraph
+          - Responsive alignment (center on mobile, left on desktop)
+        */}
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+          
+          {/* Main heading */}
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+            Hi, I’m Wong Kin Chong.
           </h1>
+
+          {/* Description / mission statement */}
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+            I am a Year 1 Computer Science student at the National University of Singapore (NUS)
+            and a tuition teacher. Physics is my favourite subject to teach.
+            <br />
+            <br />
+            This website exists because, unlike O-Level Physics, H2 Physics does not have a single,
+            well-structured textbook. Many students struggle to find clear and coherent notes.
+            My goal is to build a place with structured, student-friendly explanations for my own
+            students and other H2 Physics learners.
+            <br />
+            <br />
+            The site is still under development. In the long run, I hope to include all H2 Physics
+            chapters, practice questions, and interactive simulations to help build real intuition.
           </p>
         </div>
+
+        {/*
+          Call-to-action buttons
+          - Links styled as buttons
+          - Encourage users to explore the site
+        */}
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
         </div>
       </main>
     </div>

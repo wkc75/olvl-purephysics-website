@@ -1,17 +1,62 @@
+/* =========================================
+   GLOBAL STYLES (globals.css)
+   =========================================
+   This file defines styles that apply to
+   the ENTIRE website.
+
+   It is imported once in app/layout.tsx
+   and affects:
+   - all pages
+   - all components
+   - all MDX-rendered content
+*/
+
+/* -----------------------------------------
+   Tailwind CSS
+   -----------------------------------------
+   Loads Tailwind’s base styles, components,
+   and utility classes (flex, bg-*, text-*, etc.)
+*/
 @import "tailwindcss";
 
+/* -----------------------------------------
+   Global CSS variables (Light mode)
+   -----------------------------------------
+   These variables define the default
+   background and text colours for the site.
+*/
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
+/* -----------------------------------------
+   Tailwind theme integration
+   -----------------------------------------
+   Maps our CSS variables and Next.js font
+   variables into Tailwind’s theme system.
+
+   This allows us to use:
+   - bg-background
+   - text-foreground
+   - font-sans / font-mono
+*/
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+
+/* -----------------------------------------
+   Dark mode (system preference)
+   -----------------------------------------
+   Automatically switches colours when the
+   user’s OS is in dark mode.
+
+   No JavaScript is required.
+*/
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,23 +64,61 @@
   }
 }
 
+/* -----------------------------------------
+   Base body styles
+   -----------------------------------------
+   Sets default background and text colour
+   using the CSS variables above.
+
+   The font-family here acts as a fallback;
+   Next.js fonts are applied via className
+   in layout.tsx.
+*/
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* =========================================
+   PHYSICS TABLE STYLES
+   =========================================
+   These styles are used by the BaseUnitTable
+   component and any MDX-rendered tables.
+*/
+
+/* -----------------------------------------
+   Table wrapper
+   -----------------------------------------
+   - Allows horizontal scrolling on small screens
+   - Prevents layout breaking on mobile
+   - Adds vertical spacing around tables
+*/
 .table-wrapper {
   overflow-x: auto;
   margin: 1.5rem 0;
 }
 
+/* -----------------------------------------
+   Main table styling
+   -----------------------------------------
+   - Full width
+   - Collapsed borders for clean look
+   - Slightly smaller font for data density
+*/
 .physics-table {
   border-collapse: collapse;
   width: 100%;
   font-size: 0.95rem;
 }
 
+/* -----------------------------------------
+   Table cells (header + data)
+   -----------------------------------------
+   - Visible borders
+   - Comfortable padding
+   - Centered text (good for physics quantities)
+*/
 .physics-table th,
 .physics-table td {
   border: 1px solid #cbd5e1;
@@ -43,11 +126,22 @@ body {
   text-align: center;
 }
 
+/* -----------------------------------------
+   Table header
+   -----------------------------------------
+   - Light background to distinguish header
+   - Slightly bolder text
+*/
 .physics-table th {
   background-color: #f1f5f9;
   font-weight: 600;
 }
 
+/* -----------------------------------------
+   Zebra striping for table rows
+   -----------------------------------------
+   Improves readability for wide tables
+*/
 .physics-table tbody tr:nth-child(even) {
   background-color: #f8fafc;
 }
