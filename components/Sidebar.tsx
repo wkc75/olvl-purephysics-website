@@ -38,7 +38,9 @@ export default function Sidebar() {
                     }`}
                     size={16}
                 />
-                1. Quantities and Measurements
+                <Link href="/physics/measurements/learning_outcomes" className="flex-1 text-left">
+                    1. Quantities and Measurements
+                </Link>
             </button>
 
             {/* Animated Subsection Container */}

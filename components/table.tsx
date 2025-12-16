@@ -42,7 +42,7 @@ import React from "react";
  * the actual table rows and cells written
  * in MDX.
  */
-export function BaseUnitTable({
+export default function Table({
   children,
 }: {
   children: React.ReactNode;

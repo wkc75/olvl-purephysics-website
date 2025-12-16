@@ -1,11 +1,15 @@
-import fs from "fs";
+/**
+ * page.tsx
+ *
+ * Route:
+ * /physics/measurements/learning_outcomes
+ *
+ * This page renders MDX content compiled at BUILD TIME
+ * by @next/mdx.
+ */
 
-import path from "path";
+import Content from "./content.mdx";
 
-import { MDXRemote } from "next-mdx-remote/rsc";
-
-import remarkMath from "remark-math";
-
-import rehypeKatex from "rehype-katex";
-
-import { BaseUnitTable } from "@/components/table";
+export default function Page() {
+  return <Content />;
+}

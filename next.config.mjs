@@ -1,6 +1,15 @@
-/** @type {import('next').NextConfig} */
+import createMDX from "@next/mdx";
+
 const nextConfig = {
-  pageExtensions: ["ts", "tsx"],
+  pageExtensions: ["ts", "tsx", "md", "mdx"],
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [["remark-math"]],
+    rehypePlugins: [["rehype-katex"]],
+  },
+});
+
+export default withMDX(nextConfig);
