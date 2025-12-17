@@ -6,6 +6,8 @@ import PracticeMCQ_BaseVsDerived from "@/components/h2_phy_measurements/physical
 import PracticeMCQ_PrefixesConversion from "@/components/h2_phy_measurements/physical_quantities_prefixes/PracticeMCQ_PrefixesConversion";
 import PracticeMCQ_Homogenity from "@/components/h2_phy_measurements/physical_quantities_prefixes/PracticeMCQ_Homogenity";
 import InlineCitation from "@/components/InlineCitation";
+import PracticeMCQ_Uncertainty_Instrument from "@/components/errors_and_uncertainties/PracticeMCQ_Uncertainty_Instrument";
+import ContentContainer from "./components/ContentContainter";
 // import other MDX components here later
 
 export function useMDXComponents(
@@ -32,6 +34,8 @@ export function useMDXComponents(
     PracticeMCQ_BaseVsDerived,
     PracticeMCQ_PrefixesConversion,
     PracticeMCQ_Homogenity,
+    PracticeMCQ_Uncertainty_Instrument,
+    ContentContainer,
 
     // allow overrides
     ...components,

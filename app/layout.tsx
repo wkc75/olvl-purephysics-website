@@ -58,6 +58,7 @@ import "katex/dist/katex.min.css";
 // Sidebar appears on EVERY page
 // This is a Client Component (interactive)
 import Sidebar from "../components/Sidebar";
+import ContentContainer from "@/components/ContentContainter";
 
 // ===============================
 // Font configuration
@@ -149,7 +150,7 @@ export default function RootLayout({
               Example:
               /physics/.../page.tsx → rendered here
             */}
-            {children}
+            <ContentContainer>{children}</ContentContainer>
           </main>
         </div>
       </body>

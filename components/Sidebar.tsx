@@ -3,82 +3,157 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 export default function Sidebar() {
-    const pathname = usePathname();
+  const pathname = usePathname();
 
-    // Auto-open if user is on measurement pages
-    const shouldBeOpen = pathname.startsWith("/physics/measurements");
+  // ===============================
+  // 🔹 SUBSECTION AUTO-OPEN LOGIC
+  // ===============================
+  const shouldSubsectionBeOpen = pathname.startsWith("/physics/measurements");
+  const [sectionOpen, setSectionOpen] = useState(shouldSubsectionBeOpen);
 
-    const [open, setOpen] = useState(shouldBeOpen);
+  useEffect(() => {
+    setSectionOpen(shouldSubsectionBeOpen);
+  }, [shouldSubsectionBeOpen]);
 
-    // keep sidebar in sync when route changes
-    useEffect(() => {
-        setOpen(shouldBeOpen);
-    }, [shouldBeOpen]);
+  // ===============================
+  // 🔹 SIDEBAR TOGGLE STATE
+  // ===============================
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
-    return (
-        <aside className="w-64 bg-slate-900 text-white p-4">
-            {/* home link */}
-            <Link href = "/" className="text-2xl font-bold mb-6 block hover:underline">
-                GCE A Level Physics Interactive Guide
+  return (
+    <aside
+      className={`
+        relative
+        h-screen
+        bg-slate-900
+        text-white
+        transition-[width]
+        duration-300
+        ease-in-out
+        ${sidebarOpen ? "w-64" : "w-14"}
+      `}
+    >
+      {/* ===============================
+          🔹 CHATGPT-STYLE TOGGLE HANDLE
+          =============================== */}
+      <div
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="
+          absolute
+          right-0
+          top-0
+          h-full
+          w-4
+          cursor-pointer
+          bg-slate-900
+          hover:bg-slate-800
+          flex
+          items-center
+          justify-center
+          transition-colors
+        "
+        aria-label="Toggle sidebar"
+      >
+        <ChevronLeft
+          size={16}
+          className={`transition-transform duration-300 ${
+            sidebarOpen ? "" : "rotate-180"
+          }`}
+        />
+      </div>
+
+      {/* ===============================
+          🔹 SIDEBAR CONTENT
+          =============================== */}
+      <div
+        className={`
+          h-full
+          overflow-hidden
+          transition-opacity
+          duration-200
+          ${sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"}
+        `}
+      >
+        <Link
+          href="/"
+          className="block p-4 text-lg font-bold hover:underline"
+        >
+          GCE A Level Physics
+        </Link>
+
+        <nav className="px-4 text-sm">
+          {/* Measurements Section */}
+          <button
+            onClick={() => setSectionOpen(!sectionOpen)}
+            className="flex w-full items-center gap-2 font-semibold hover:underline"
+          >
+            <ChevronRight
+              size={16}
+              className={`transition-transform duration-300 ${
+                sectionOpen ? "rotate-90" : ""
+              }`}
+            />
+            <Link
+              href="/physics/measurements/learning_outcomes"
+              className="flex-1 text-left"
+            >
+              1. Quantities and Measurements
             </Link>
+          </button>
 
-        <nav className="text-sm">
-            {/* Measurements section */}
-            {/* button */}
-            <button
-                onClick={() => setOpen(!open)}
-                className="flex items-center gap-2 w-full font-semibold hover:underline"
+          {/* Subsections */}
+          <div
+            className={`ml-6 overflow-hidden transition-all duration-300 ${
+              sectionOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}
+          >
+            <SidebarLink
+              href="/physics/measurements/physical_quantities_prefixes"
+              active={pathname.includes("physical_quantities_prefixes")}
             >
-                <ChevronRight
-                    className={`transition-transform duration-300 ${
-                        open ? "rotate-90" : ""
-                    }`}
-                    size={16}
-                />
-                <Link href="/physics/measurements/learning_outcomes" className="flex-1 text-left">
-                    1. Quantities and Measurements
-                </Link>
-            </button>
+              1.1 Physical Quantities and Prefixes
+            </SidebarLink>
 
-            {/* Animated Subsection Container */}
-            <div
-                className={`ml-6 overflow-hidden transition-all duration-300 ${
-                    open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                }`}
+            <SidebarLink
+              href="/physics/measurements/errors_and_uncertainties"
+              active={pathname.includes("errors_and_uncertainties")}
             >
-                <Link 
-                    href="/physics/measurements/physical-quantities-prefixes"
-                    className={`block mt-2 hover:underline ${
-                        pathname.includes("physical-quantities-prefixes")
-                            ? "text-white font-semibold"
-                            : "text-slate-300"
-                    }`}
-                >
-                    1.1 Physical Quantities and Prefixes
-                </Link>
-                <Link 
-                    href="/physics/measurements/errors-and-uncertainties"
-                    className={`block mt-2 hover:underline ${
-                        pathname.includes("errors-and-uncertainties")
-                            ? "text-white font-semibold"
-                            : "text-slate-300"
-                    }`}
-                >
-                    1.2 Errors and Uncertainties
-                </Link>
-                <Link 
-                    href="/physics/measurements/scalar-and-vector"
-                    className={`block mt-2 hover:underline ${
-                        pathname.includes("scalar-and-vector")
-                            ? "text-white font-semibold"
-                            : "text-slate-300"
-                    }`}
-                >
-                    1.3 Scalar and Vector Quantities
-                </Link>
-            </div>
+              1.2 Errors and Uncertainties
+            </SidebarLink>
+
+            <SidebarLink
+              href="/physics/measurements/scalar-and-vector"
+              active={pathname.includes("scalar-and-vector")}
+            >
+              1.3 Scalar and Vector Quantities
+            </SidebarLink>
+          </div>
         </nav>
-        </aside>)}
+      </div>
+    </aside>
+  );
+}
+
+function SidebarLink({
+  href,
+  active,
+  children,
+}: {
+  href: string;
+  active: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`block mt-2 hover:underline ${
+        active ? "font-semibold text-white" : "text-slate-300"
+      }`}
+    >
+      {children}
+    </Link>
+  );
+}

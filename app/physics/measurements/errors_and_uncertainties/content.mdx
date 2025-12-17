@@ -1,0 +1,185 @@
+# **1.2 Errors and Uncertainties**
+
+In physics experiments, a measured quantity is written as $x \pm \Delta x$, where
+$x$ is the measured value and $\Delta x$ shows how uncertain the measurement is.
+This means that the true value is expected to lie somewhere within the range $(x-
+\Delta x,\, x + \Delta x)$, rather than being exactly equal to $x$.{" "}
+
+A single measurement
+is limited because its uncertainty is mainly determined by the precision of the measuring
+instrument and does not show how the result might change if the measurement were
+repeated. Besides instrumental uncertainty, there may be other experimental uncertainties,
+and these should be included in the stated value of $\Delta x$ when they are known.
+
+## **1.2.1 Uncertainty due to Instrument**
+
+Each **individual measuremnt** (**reading**) made using an instrusment carries an inherent uncertainty.
+This instrumental uncertainty is taken as half of the smallest scale interval.
+
+<PracticeMCQ_Uncertainty_Instrument />
+
+<br />
+
+### **Fraction Uncertainty**
+
+The **fractional unceratainty** is the ratio of the actual uncertainty to the measured value.
+
+$$
+\text{The fractional uncertainty in a quantity \( x \) is } \frac{\Delta x}{x}
+$$
+
+### **Percentage Uncertainty**
+
+The percentage uncertainty is obtained by converting the fractional unceratainty into percentage
+form by multiplying by 100%
+
+$$
+\text{The percentage unceratainty in a quantity \( x \) is } \frac{\Delta x}{x} \times 100\%
+$$
+
+## **1.2.2 SIgnificant Figures and Decimal Places**
+
+1. **- Express uncertainties to 1 significant figure (1 s.f.)**
+   > If the unceratainty in a measurement is estimated to be $ 0.025 $, it should be rounded to
+   > $ 0.03 $
+2. **- Express the quantity to the same palce value as its uncertainty.**
+
+   > Using the same example, $ 0.03 $ has its most significant digit in the second decimal place.
+   > Hence the quantity should be written to exactly two decimal places.
+
+   > $ 12.10 \pm 0.03 $
+
+   > and NOT $ 12.1 \pm 0.03 $ or $ 12.102 \pm 0.03 $
+
+## **1.2.3 Combining Uncertainties**
+
+### **(i) Adding or Subtracting Measured Quantities**
+
+For \( c = a + b \), the absolute uncertainty in \( c \) is:
+
+$$
+\Delta c = \Delta a + \Delta b
+$$
+
+For \( d = a - b \), the absolute uncertainty in \( d \) is:
+
+$$
+\Delta d = \Delta a + \Delta b
+$$
+
+### **(ii) Multiplying or Dividing Measured Quantities**
+
+For $p = ab$, the fractional uncertainty in $p$ is:
+
+$$
+\frac{\Delta p}{p} = \frac{\Delta a}{a} + \frac{\Delta b}{b}
+$$
+
+For $q = \frac{a}{b}$, the fractional uncertainty in $q$ is:
+
+$$
+\frac{\Delta q}{q} = \frac{\Delta a}{a} + \frac{\Delta b}{b}
+$$
+
+### **(iii) Scalling**
+
+If $r = ka$, where $k$ is a constant, the absolute uncertainty in $r$ is:
+
+$$
+\Delta r = k(\Delta a)
+$$
+
+### **(iv) Power**
+
+If $s = a^n$, where $n$ is a constant, the fractional uncertainty in $s$ is:
+
+$$
+\frac{\Delta s}{s} = |n| \frac{\Delta a}{a}
+$$
+
+### **(v) Special functions or complicated function, X**
+
+The absolute uncertainty of $X$ is given by:
+
+$$
+\Delta X = \tfrac{1}{2} (\text{maximum possible } X - \text{minimum possible } X)
+$$
+
+That is,
+
+$$
+\Delta X = \tfrac{1}{2} (X_{\max} - X_{\min})
+$$
+
+## **1.2.4 Precision and Accuracy**
+
+**Precision** is a measure of how well a result can be determined
+(without reference to a theoretical or true value).
+It is the degree of consistency and agreement among independent measurements of the same quantity.
+
+**Accuracy** is the closeness of agreement between a measured value and a true or accepted value.
+
+## **1.2.5 Systematic and Random Errors**
+
+**Random Errors** are deviations of the measured value from the mean value, with varying signs and magnitudes.
+
+Random errors can occur despite repeating the experiments under the same conditions.
+Random errors are caused by environmental conditions, irregularity of wuantity being measured,
+and limitations of the measurement equipment or the observer.
+
+**To reduce random errors**
+
+1. **- Improving the procedure to minimize uncertainty due to random errors**
+
+For example, instead of measuring the thickness of a single sheet of paper, accuracy can be improved by stacking several sheets together and measuring the total thickness. Using the same micrometer screw gauge, the absolute uncertainty remains $\pm 0.01\ \text{mm}$, but since the measurement now corresponds to many sheets, the uncertainty in the thickness of one sheet of paper is reduced.
+
+2. **- Using a large sample size in order for the mean value to be a good estimate of the true value**
+
+<br />
+
+**Systematic Errors** are deviations of the mean value from the true value, with
+same sign and similar magnitude.
+
+<br />
+
+<Table>
+  <thead>
+    <tr>
+      <th>Type of error</th>
+      <th>Characteristics</th>
+      <th>
+        If this error exists,<br />
+        will precision be affected?
+      </th>
+      <th>
+        If this error exists,<br />
+        will accuracy be affected?
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>Random</td>
+      <td>
+        Varying in both magnitude and direction about a mean value.
+        Can be reduced by taking the average of repeated readings,
+        but not eliminated.
+      </td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+
+    <tr>
+      <td>Systematic</td>
+      <td>
+        Varying in a fixed direction about a true value.
+        Cannot be reduced by taking the average of repeated readings,
+        but may be eliminated by good experimental techniques.
+      </td>
+      <td>No</td>
+      <td>Yes</td>
+    </tr>
+
+  </tbody>
+</Table>
