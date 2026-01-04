@@ -6,7 +6,7 @@ import { retrieveTopChunksKeyword } from "@/lib/mdx/retrieveKeyword";
 import { buildSystemPrompt, buildUserPrompt } from "@/lib/llm/prompt";
 import { classifyScope } from "@/lib/scope/h2Scope";
  
- 
+
 type ChatMsg = { role: "user" | "assistant"; content: string };
  
 export async function POST(req: Request) {

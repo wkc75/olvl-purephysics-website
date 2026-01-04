@@ -42,7 +42,7 @@ export default function RootLayout({
           </main>
 
           {/* Global H2 Physics AI Tutor */}
-          <ChatWidget />
+          {/*<ChatWidget />*/}
         </div>
       </body>
     </html>
